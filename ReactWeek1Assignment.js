@@ -16,14 +16,19 @@ class Bootcamp {
   }
 
   registerStudent(student) {
-    const registeredStudents = this.students.filter(student => student.email !== student.email)
-    this.students.push(registeredStudents)
+    let studentExists = this.students.filter((member) => member.email === student.email).length
+    if(studentExists) {
+      console.log('Already registered')
+    } else {
+      console.log(`Registering ${this.email} to the bootcamp ${this.community}`)
+      this.students.push(student)
+    }
   }
 }
 
-const Kristen = new Student('Kristen', 'kristen123@gmail.com', 'Nucamp')
-const Frank = new Student('Frank', 'frank123@gmail.com', 'Nucamp')
-const Nucamp = new Bootcamp('Kristen', 2)
-const OtherCamp = new Bootcamp('Frank', 2)
-Nucamp.registerStudent(Kristen)
-console.log('Kristen', Nucamp)
+const kristen = new Student('Kristen', 'kristen123@gmail.com', 'Nucamp')
+const frank = new Student('Frank', 'frank123@gmail.com', 'Nucamp')
+const nucamp = new Bootcamp('Kristen', 2)
+const otherCamp = new Bootcamp('Frank', 2)
+nucamp.registerStudent(Kristen)
+console.log('Kristen', nucamp)
